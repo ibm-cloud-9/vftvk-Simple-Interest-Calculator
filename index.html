@@ -1,16 +1,43 @@
+<!DOCTYPE html>
 <html>
-    <head>
-    <script src="script.js"></script>
-    <link rel="stylesheet" href="style.css">
-    </head>
-    <body>
-        <h1>Simple Interest Calculator</h1>
-
-        Amount <input type="number"  id="principal">  <br/>
-        Rate <input type="number"  id="rate">  <br/>
-        No. of Years <input type="number"  id="years">  <br/>
-        Interest : <span id="result"></span><br>
-
-        <button onclick="compute()">Compute</button>
-    </body>
+   <head>
+      <script src="script.js"></script>
+      <link rel="stylesheet" href="style.css">
+   </head>
+   <body>
+      <div class="calculator">
+         <h1>Simple Interest Calculator</h1>
+         <form onsubmit="event.preventDefault(); validateInput();">
+			 <div class="panel">
+				<div>
+				   <label for "principle">Amount</label>
+				   <input type="number" id="principal" min="0" required onfocus="resetResult()"/>
+				</div>
+				<div>
+				   <label for "slider">Interest Rate</label>
+				   <input class="slider" id="slider-rate" type="range" min="1" max="100" value="all" step="0.5">
+				   <span class="slider-rate" id="display-rate"></span>
+				</div>
+				<div>
+				   <label for "years">No. of Years</label>
+				   <select name="years" id="years">
+					  <option value="1">1</option>
+					  <option value="2">2</option>
+					  <option value="3">3</option>
+					  <option value="4">4</option>
+					  <option value="5" selected>5</option>
+				   </select>
+				</div>
+				<button type="submit">Compute Interest</input>
+			 </div>
+			 <div id="result-block" class="panel">
+				<p>If you deposit <span class="result" id="result-principal"></span>,<br/>
+					at an interest rate of <span class="result" id="result-rate"></span>.<br/>
+					You will receive an amount of <span class="result" id="result-interest"></span>,<br/>
+					in the year <span class="result" id="result-year"></span></p>
+			 </div>
+			 <h3 class="legend">&copy;Everyone Can Get Rich</h3>
+		  </div>
+         </form>
+   </body>
 </html>
